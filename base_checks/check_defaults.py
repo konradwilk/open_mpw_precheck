@@ -100,6 +100,8 @@ def has_default_content(lc):
                 lc.print_control("{{PROGRESS}} Check if %s is default "%anupdated_file.name)
                 for adefault_file in default_view(name):
                     adefault_file = Path(adefault_file)
+                    if adefault_file.is_dir():
+                        continue
                     if excluded(adefault_file) or excluded(anupdated_file):
                         continue
                     with open(adefault_file, 'rb') as default, \
